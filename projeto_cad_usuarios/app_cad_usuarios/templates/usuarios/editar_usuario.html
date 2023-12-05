@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Cadastre-me</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-light" style="background-color: aquamarine !important;">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">Cadastre-me!</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <form action="{% url 'edit_item' id_usuario=usuario.id %}" method="post">
+            {% csrf_token %}
+            <h1 class="mb-4">Editar Usuário</h1>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="nome" class="form-label">Nome Completo</label>
+                    <input name="nome" class="form-control" type="text" value={{usuario.nome}}>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="telefone" class="form-label">Telefone</label>
+                    <input name="telefone" class="form-control" type="text" value={{usuario.telefone}}>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input name="email" class="form-control" type="email" value={{usuario.email}}>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="confirmar_email" class="form-label">Confirmar E-mail</label>
+                    <input name="confirmar_email" class="form-control" type="email" value={{usuario.email}}>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="cpf" class="form-label">CPF</label>
+                    <input name="cpf" class="form-control" type="text" value={{usuario.cpf}}>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="endereco" class="form-label">Endereço</label>
+                    <input name="endereco" class="form-control" type="text" value={{usuario.endereco}}>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input name="senha" class="form-control" type="password" value={{usuario.senha}}>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="confirmar_senha" class="form-label">Confirmar Senha</label>
+                    <input name="confirmar_senha" class="form-control" type="password" value={{usuario.senha}}> 
+                </div>
+            </div>
+
+            <button class="btn btn-primary">Enviar</button>
+        </form>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
